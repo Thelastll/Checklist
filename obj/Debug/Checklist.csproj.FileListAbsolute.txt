@@ -1,0 +1,16 @@
+C:\Users\user\source\repos\C#\Checklist\bin\Debug\Checklist.exe.config
+C:\Users\user\source\repos\C#\Checklist\bin\Debug\Checklist.exe
+C:\Users\user\source\repos\C#\Checklist\bin\Debug\Checklist.pdb
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.Properties.Resources.resources
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.csproj.GenerateResource.cache
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.exe
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.pdb
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.CLForm.resources
+C:\Users\user\source\repos\C#\Checklist\bin\Debug\MetroFramework.Design.dll
+C:\Users\user\source\repos\C#\Checklist\bin\Debug\MetroFramework.dll
+C:\Users\user\source\repos\C#\Checklist\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.csproj.Up2Date
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.Settings.resources
+C:\Users\user\source\repos\C#\Checklist\obj\Debug\Checklist.HistoryForm.resources
