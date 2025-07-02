@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Checklist.Settings;
 
 namespace Checklist
 {
@@ -20,9 +21,8 @@ namespace Checklist
 
         private void HistoryForm_Load(object sender, EventArgs e)
         {
-            var file = new List<string>(File.ReadAllLines("RecentTasksData.csv"));
             int day = 0;
-            for (int i = 1; i < file.Count; i++)
+            for (int i = 1; i < UploadedFiles.GetRecentTasks().Count; i++)
             {
                 day++;
                 if (day == 1)
@@ -38,9 +38,9 @@ namespace Checklist
                     history.Items.Add(day.ToString() + " Дней назад:");
                 }
 
-                    for (int j = 0; j < int.Parse(file[i].Split(';')[0]); j++)
+                    for (int j = 0; j < int.Parse(UploadedFiles.GetRecentTasks()[i].Split(';')[0]); j++)
                     {
-                        history.Items.Add("      " + file[i].Split(';')[j + 1]);
+                        history.Items.Add("      " + UploadedFiles.GetRecentTasks()[i].Split(';')[j + 1]);
                     }
             }
         }

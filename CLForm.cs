@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
+using static Checklist.Settings;
 
 namespace Checklist
 {
@@ -27,95 +28,115 @@ namespace Checklist
             g = GraphicPanel.CreateGraphics();
             border = new Pen(Color.Black, 4);
             pen = new Pen(Color.Black, 2);
-            var file = new List<string>(File.ReadAllLines("DateData.csv"));
 
-            UpdateDateData(file, true);   
-            UpdateStreak(file);
-            UpdateEndTime(file);
+            UpdateDateData(EverySecond: true);   
+            UpdateStreak();
+            UpdateEndTime();
             ShiftRecentTasksData();
             UpdateDayList();
             UpdateGraphic();
         }
-
+        
         private void UpdateListData()
         {
             File.WriteAllText("ListData.csv", "");
+            var ListData = new List<string>();
             for (int i = 0; i < daylist.Items.Count; i++)
             {
                 File.AppendAllText("ListData.csv", daylist.Items[i].ToString() + ';' + daylist.GetItemChecked(i).ToString() + '\n');
+                ListData.Add(daylist.Items[i].ToString() + ';' + daylist.GetItemChecked(i).ToString() + '\n');
             }
+            UploadedFiles.SetList(ListData);
         }
 
         private void UpdateDayList()
         {
-            var file = new List<string>(File.ReadAllLines("ListData.csv"));
             daylist.Items.Clear();
-            for (int i = 0; i < file.Count; i++)
+            for (int i = 0; i < UploadedFiles.GetList().Count; i++)
             {
-                daylist.Items.Add(file[i].Split(';')[0]);
-                daylist.SetItemChecked(i, bool.Parse(file[i].Split(';')[1]));
+                daylist.Items.Add(UploadedFiles.GetList()[i].Split(';')[0]);
+                daylist.SetItemChecked(i, bool.Parse(UploadedFiles.GetList()[i].Split(';')[1]));
             }
         }
 
-        private void UpdateDateData(List<string> file, bool EverySecond = false)
+        private void UpdateDateData(bool EverySecond = false)
         {
+            var DateData = UploadedFiles.GetDate();
             if (EverySecond)
             {
                 var timenow = DateTime.Now;
-                if ((DateTime.Now.Date - DateTime.Parse(file[1]).Date).TotalDays >= 2)
+                if ((DateTime.Now.Date - DateTime.Parse(UploadedFiles.GetDate()[1]).Date).TotalDays >= 2)
                 {
                     File.WriteAllText("DateData.csv", timenow.Day.ToString() +
                     '-' + timenow.Month.ToString() +
                     '-' + timenow.Year.ToString() + '\n' +
                     timenow.Add(TimeSpan.FromDays(-1)).Day.ToString() + '-' + timenow.Add(TimeSpan.FromDays(-1)).Month.ToString() + 
                     '-' + timenow.Add(TimeSpan.FromDays(-1)).Year.ToString() + '\n');
-                    
+
+                    DateData[0] = timenow.Day.ToString() + '-' + timenow.Month.ToString() + '-' + timenow.Year.ToString() + '\n';
+
+                    DateData[1] = timenow.Add(TimeSpan.FromDays(-1)).Day.ToString() + '-' + timenow.Add(TimeSpan.FromDays(-1)).Month.ToString() +
+                    '-' + timenow.Add(TimeSpan.FromDays(-1)).Year.ToString() + '\n';
                 }
             }
             else
             {
-                if ((DateTime.Now.Date - DateTime.Parse(file[1]).Date).TotalDays < 2)
+                if ((DateTime.Now.Date - DateTime.Parse(UploadedFiles.GetDate()[1]).Date).TotalDays < 2)
                 {
-                    File.WriteAllText("DateData.csv", DateTime.Parse(file[0]).Day.ToString() +
-                    '-' + DateTime.Parse(file[0]).Month.ToString() +
-                    '-' + DateTime.Parse(file[0]).Year.ToString() + '\n' +
+                    File.WriteAllText("DateData.csv", DateTime.Parse(UploadedFiles.GetDate()[0]).Day.ToString() +
+                    '-' + DateTime.Parse(UploadedFiles.GetDate()[0]).Month.ToString() +
+                    '-' + DateTime.Parse(UploadedFiles.GetDate()[0]).Year.ToString() + '\n' +
                     DateTime.Now.Day.ToString() + '-' + DateTime.Now.Month.ToString() + '-' + DateTime.Now.Year.ToString() + '\n');
+
+                    DateData[0] = DateTime.Parse(UploadedFiles.GetDate()[0]).Day.ToString() +
+                    '-' + DateTime.Parse(UploadedFiles.GetDate()[0]).Month.ToString() +
+                    '-' + DateTime.Parse(UploadedFiles.GetDate()[0]).Year.ToString() + '\n';
+
+                    DateData[1] = DateTime.Now.Day.ToString() + '-' + DateTime.Now.Month.ToString() + '-' + DateTime.Now.Year.ToString() + '\n';
                 }
-                else if ((DateTime.Now.Date - DateTime.Parse(file[1]).Date).TotalDays >= 2)
+                else if ((DateTime.Now.Date - DateTime.Parse(UploadedFiles.GetDate()[1]).Date).TotalDays >= 2)
                 {
                     File.WriteAllText("DateData.csv", DateTime.Now.Day.ToString() +
                     '-' + DateTime.Now.Month.ToString() +
                     '-' + DateTime.Now.Year.ToString() + '\n' +
                     DateTime.Now.Day.ToString() + '-' + DateTime.Now.Month.ToString() + '-' + DateTime.Now.Year.ToString() + '\n');
+
+                    DateData[0] = DateTime.Now.Day.ToString() +
+                    '-' + DateTime.Now.Month.ToString() +
+                    '-' + DateTime.Now.Year.ToString() + '\n';
+
+                    DateData[1] = DateTime.Now.Day.ToString() + '-' + DateTime.Now.Month.ToString() + '-' + DateTime.Now.Year.ToString() + '\n';
                 }
             }
+            UploadedFiles.SetDate(DateData);
         }
 
-        private void UpdateRecentTasksData(List<string> RecentTasksfile)
+        private void UpdateRecentTasksData()
         {
             File.WriteAllText("RecentTasksData.csv", "");
-            for (int i = 0; i < RecentTasksfile.Count; i++)
+            for (int i = 0; i < UploadedFiles.GetRecentTasks().Count; i++)
             {
-                File.AppendAllText("RecentTasksData.csv", RecentTasksfile[i] + '\n');
+                File.AppendAllText("RecentTasksData.csv", UploadedFiles.GetRecentTasks()[i] + '\n');
             }
         }
 
-        private void AddRecentTasks(List<string> RecentTasksfile, string line)
+        private void AddRecentTasks(string line)
         {
+            var RecentTasksfile = UploadedFiles.GetRecentTasks();
             RecentTasksfile[1] += ";" + line;
             var temporary = RecentTasksfile[1].Split(';');
             temporary[0] = (int.Parse(temporary[0]) + 1).ToString();
             RecentTasksfile[1] = string.Join(";", temporary);
-            UpdateRecentTasksData(RecentTasksfile);
+            UploadedFiles.SetRecentTasks(RecentTasksfile);
+            UpdateRecentTasksData();
         }
 
         private void ShiftRecentTasksData()
         {
             
-            if (DateTime.Now.Date != DateTime.Parse(File.ReadLines("RecentTasksData.csv").First()).Date) 
+            if (DateTime.Now.Date != DateTime.Parse(UploadedFiles.GetRecentTasks()[0]).Date) 
             {
-                var RecentTasksfile = new List<string>(File.ReadAllLines("RecentTasksData.csv"));
-                var AddDays = DateTime.Parse(RecentTasksfile[0]).Date.AddDays(1);
+                var RecentTasksfile = UploadedFiles.GetRecentTasks();
                 for (int i = 0; i < (DateTime.Now.Date - DateTime.Parse(RecentTasksfile[0]).Date).TotalDays; i++)
                 {
                     for (int j = RecentTasksfile.Count-1; j > 0; j--)
@@ -125,28 +146,30 @@ namespace Checklist
                     RecentTasksfile[1] = "0";
                 }
                 RecentTasksfile[0] = DateTime.Now.Date.Day.ToString() + '-' + DateTime.Now.Date.Month.ToString() + '-' + DateTime.Now.Date.Year.ToString();
-                UpdateRecentTasksData(RecentTasksfile);
+                UploadedFiles.SetRecentTasks(RecentTasksfile);
+                UpdateRecentTasksData();
             }
         }
 
-        private void UpdateStreak(List<string> file)
+        private void UpdateStreak()
         {
-            Streak.Text = ((DateTime.Parse(file[1]).Date - DateTime.Parse(file[0]).Date).TotalDays + 1).ToString();
+            Streak.Text = ((DateTime.Parse(UploadedFiles.GetDate()[1]).Date - DateTime.Parse(UploadedFiles.GetDate()[0]).Date).TotalDays + 1).ToString();
             if (int.Parse(Streak.Text) < 0)
             {
                 Streak.Text = "0";
             }
         }
 
-        private void UpdateEndTime(List<string> file)
+        private void UpdateEndTime()
         {
-            var time = DateTime.Parse(file[1]).Add(TimeSpan.FromDays(2)) - DateTime.Now;
+            var time = DateTime.Parse(UploadedFiles.GetDate()[1]).Add(TimeSpan.FromDays(2)) - DateTime.Now;
 
-            if (DateTime.Now.Date == DateTime.Parse(file[1]).Date)
+            if (DateTime.Now.Date == DateTime.Parse(UploadedFiles.GetDate()[1]).Date)
             {
                 EndTime.Text = "Всё завершено";
             }
-            else if ((DateTime.Now.Date - DateTime.Parse(file[1]).Date).TotalDays == 1 && DateTime.Parse(file[1]).Date >= DateTime.Parse(file[0]).Date)
+            else if ((DateTime.Now.Date - DateTime.Parse(UploadedFiles.GetDate()[1]).Date).TotalDays == 1 && 
+                      DateTime.Parse(UploadedFiles.GetDate()[1]).Date >= DateTime.Parse(UploadedFiles.GetDate()[0]).Date)
             {
                 EndTime.Text = time.Hours.ToString() + ':' + time.Minutes.ToString() + ':' + time.Seconds.ToString();
             }
@@ -161,13 +184,13 @@ namespace Checklist
             g.DrawLine(border, 38, 224, GraphicPanel.Width, 224); //горизонтальная
             g.DrawLine(border, 40, 224, 40, 15); //вертикальная
 
-            var RecentTasksfile = new List<string>(File.ReadAllLines("RecentTasksData.csv"));
+           
             var TasksCountList = new List<int>();
             var LabelsValueList = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
 
-            for (int i = 1; i < RecentTasksfile.Count ; i++)
+            for (int i = 1; i < UploadedFiles.GetRecentTasks().Count ; i++)
             {
-                TasksCountList.Add(int.Parse(RecentTasksfile[i].Split(';')[0]));
+                TasksCountList.Add(int.Parse(UploadedFiles.GetRecentTasks()[i].Split(';')[0]));
             }
 
 
@@ -203,6 +226,7 @@ namespace Checklist
                 AddLine.Text = "";
                 UpdateListData(); 
             }
+            daylist.SelectedIndex = -1;
         }
 
         private void DelButton_Click(object sender, EventArgs e)
@@ -212,12 +236,14 @@ namespace Checklist
                 daylist.Items.RemoveAt(daylist.SelectedIndex);
                 UpdateListData();
             }
+            daylist.SelectedIndex = -1;
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             UpdateListData();
             CheckListData();
+            daylist.SelectedIndex = -1;
         }
 
         private void RenameButton_Click(object sender, EventArgs e)
@@ -228,16 +254,19 @@ namespace Checklist
                 AddLine.Text = "";
                 UpdateListData();
             }
+            daylist.SelectedIndex = -1;
         }
 
         private void Settings_Click(object sender, EventArgs e)
         {
+            daylist.SelectedIndex = -1;
             var settings = new Settings();
             settings.ShowDialog();
         }
 
         private void CheckHistory_Click(object sender, EventArgs e)
         {
+            daylist.SelectedIndex = -1;
             ShiftRecentTasksData();
             var history = new HistoryForm();
             history.ShowDialog();
@@ -245,11 +274,9 @@ namespace Checklist
 
         private void UpdateStreakTimer_Tick(object sender, EventArgs e)
         {
-            var file = new List<string>(File.ReadAllLines("DateData.csv"));
-            UpdateStreak(file);
-            UpdateEndTime(file);
-            UpdateDateData(file, true);
-            UpdateGraphic();
+            UpdateStreak();
+            UpdateEndTime();
+            UpdateDateData(EverySecond: true);
         }
 
         private void UpdateGraphicTimer_Tick(object sender, EventArgs e)
@@ -260,12 +287,11 @@ namespace Checklist
 
         private void DeleteCompletedTasks()
         {
-            var file = new List<string>(File.ReadAllLines("RecentTasksData.csv"));
             for (int i = 0; i < daylist.Items.Count; i++)
             {
                 if (daylist.GetItemChecked(i))
                 {
-                    AddRecentTasks(file, daylist.Items[i].ToString());
+                    AddRecentTasks(daylist.Items[i].ToString());
                     daylist.Items.RemoveAt(i);
                     i -= 1;
                 }
@@ -276,27 +302,24 @@ namespace Checklist
         private void CheckListData()
         {
             int total = 0;
-            var ListDatafile = new List<string>(File.ReadAllLines("ListData.csv"));
-            var SettingsDatafile = new List<string>(File.ReadLines("SettingsData.csv"));
-            var DateDatafile = new List<string>(File.ReadAllLines("DateData.csv"));
 
-            for (int i = 0; i < ListDatafile.Count; i++)
+            for (int i = 0; i < UploadedFiles.GetList().Count; i++)
             {
-                if (bool.Parse(ListDatafile[i].Split(';')[1]))
+                if (bool.Parse(UploadedFiles.GetList()[i].Split(';')[1]))
                 {
                     total++;
                 }
             }
 
-            if (DateTime.Parse(DateDatafile[1]).Date == DateTime.Now.Date)
+            if (DateTime.Parse(UploadedFiles.GetDate()[1]).Date == DateTime.Now.Date)
             {
                 DeleteCompletedTasks();
             }
-            else if (total >= int.Parse(SettingsDatafile[0]))
+            else if (total >= int.Parse(UploadedFiles.GetSettings()[0]))
             {
-                UpdateDateData(DateDatafile);
+                UpdateDateData();
                 DeleteCompletedTasks();
-                UpdateStreak(DateDatafile);
+                UpdateStreak();
             }
         }
     }

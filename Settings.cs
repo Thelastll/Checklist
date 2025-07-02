@@ -29,13 +29,80 @@ namespace Checklist
 
             public static void UpdateWindowSettings()
             {
-                var file = new List<string>(File.ReadAllLines("SettingsData.csv"));
-                form.Movable = bool.Parse(file[1]);
+                form.Movable = bool.Parse(UploadedFiles.GetSettings()[1]);
             }
 
             public static void start()
             {
                 Application.Run(form);
+            }
+        }
+
+        internal static class UploadedFiles
+        {
+            enum FileNames
+            {
+                Date = 0,
+                List,
+                RecentTasks,
+                Settings
+            }
+
+            static List<List<string>> files = new List<List<string>>();
+            static UploadedFiles()
+            {
+                files.Add(new List<string>(File.ReadAllLines("DateData.csv")));
+                files.Add(new List<string>(File.ReadAllLines("ListData.csv")));
+                files.Add(new List<string>(File.ReadAllLines("RecentTasksData.csv")));
+                files.Add(new List<string>(File.ReadAllLines("SettingsData.csv")));
+            }
+
+            public static void SetDate(List<string> newfile)
+            {
+                if (newfile != null)
+                {
+                    files[(int)FileNames.Date] = newfile;
+                }
+            }
+            public static List<string> GetDate()
+            {
+                return files[(int)FileNames.Date];
+            }
+
+            public static void SetList(List<string> newfile)
+            {
+                if (newfile != null)
+                {
+                    files[(int)FileNames.List] = newfile;
+                }
+            }
+            public static List<string> GetList()
+            {
+                return files[(int)FileNames.List];
+            }
+
+            public static void SetRecentTasks(List<string> newfile)
+            {
+                if (newfile != null)
+                {
+                    files[(int)FileNames.RecentTasks] = newfile;
+                }
+            }
+            public static List<string> GetRecentTasks()
+            {
+                return files[(int)FileNames.RecentTasks];
+            }
+
+            public static void SetSettings(List<string> newfile)
+            {
+                if (newfile != null)
+                {
+                    files[(int)FileNames.Settings] = newfile;
+                }
+            }
+            public static List<string> GetSettings()
+            {
+                return files[(int)FileNames.Settings];
             }
         }
 
@@ -47,14 +114,20 @@ namespace Checklist
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            var file = new List<string>(File.ReadAllLines("SettingsData.csv"));
-            TotalItemsCount.Text = file[0].ToString();
-            AllowDragWindow.Checked = bool.Parse(file[1]);
+            TotalItemsCount.Text = UploadedFiles.GetSettings()[0].ToString();
+            AllowDragWindow.Checked = bool.Parse(UploadedFiles.GetSettings()[1]);
         }
 
         private void Settings_FormClosed(object sender, FormClosedEventArgs e)
         {
             File.WriteAllText("SettingsData.csv", TotalItemsCount.Text + '\n' + AllowDragWindow.Checked.ToString() + '\n');
+            var SettingsData = new List<string>() { "", "" };
+
+            SettingsData[0] = TotalItemsCount.Text + '\n';
+            SettingsData[1] = AllowDragWindow.Checked.ToString() + '\n';
+
+            UploadedFiles.SetSettings(SettingsData);
+
             WindowSettings.UpdateWindowSettings();
         }
     }
