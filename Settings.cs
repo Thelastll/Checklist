@@ -10,16 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
 
-
 namespace Checklist
 {
     public partial class Settings : MetroFramework.Forms.MetroForm
     {
-        internal static class WindowSettings
+        internal static class Window
         {
             public static CLForm form;
 
-            static WindowSettings()
+            static Window()
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -51,10 +50,29 @@ namespace Checklist
             static List<List<string>> files = new List<List<string>>();
             static UploadedFiles()
             {
+                CheckForFiles();
                 files.Add(new List<string>(File.ReadAllLines("DateData.csv")));
                 files.Add(new List<string>(File.ReadAllLines("ListData.csv")));
                 files.Add(new List<string>(File.ReadAllLines("RecentTasksData.csv")));
                 files.Add(new List<string>(File.ReadAllLines("SettingsData.csv")));
+            }
+
+            public static void CheckForFiles()
+            {
+                if (!File.Exists("DateData.csv"))
+                    File.AppendAllText("DateData.csv", DateTime.Now.Day.ToString() + '-' + DateTime.Now.Month.ToString() + '-' + DateTime.Now.Year.ToString() +
+                        '\n' + DateTime.Now.Add(TimeSpan.FromDays(-1)).Day.ToString() + '-' + DateTime.Now.Add(TimeSpan.FromDays(-1)).Month.ToString() +
+                        '-' + DateTime.Now.Add(TimeSpan.FromDays(-1)).Year.ToString() + '\n');
+
+                if (!File.Exists("ListData.csv"))
+                    File.AppendAllText("ListData.csv", "");
+
+                if (!File.Exists("RecentTasksData.csv"))
+                    File.AppendAllText("RecentTasksData.csv", DateTime.Now.Date.Day.ToString() + '-' + DateTime.Now.Date.Month.ToString() + '-' +
+                        DateTime.Now.Date.Year.ToString() + "\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n");
+
+                if (!File.Exists("SettingsData.csv"))
+                    File.AppendAllText("SettingsData.csv", "1\nTrue\n");
             }
 
             public static void SetDate(List<string> newfile)
@@ -109,7 +127,7 @@ namespace Checklist
         public Settings()
         {
             InitializeComponent();
-            WindowSettings.UpdateWindowSettings();
+            Window.UpdateWindowSettings();
         }
 
         private void Settings_Load(object sender, EventArgs e)
@@ -128,7 +146,7 @@ namespace Checklist
 
             UploadedFiles.SetSettings(SettingsData);
 
-            WindowSettings.UpdateWindowSettings();
+            Window.UpdateWindowSettings();
         }
     }
 }

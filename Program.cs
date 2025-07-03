@@ -16,7 +16,7 @@ namespace Checklist
         [STAThread]
         static void Main()
         {
-            Settings.WindowSettings.start();
+            Settings.Window.start();
         }
     }
 

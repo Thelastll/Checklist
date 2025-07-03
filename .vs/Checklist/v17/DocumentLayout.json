@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\clform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|c:\\users\\user\\source\\repos\\c#\\checklist\\clform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:clform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\clform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:clform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\historyform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -21,14 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|c:\\users\\user\\source\\repos\\c#\\checklist\\clform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:clform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|C:\\Users\\user\\source\\repos\\C#\\Checklist\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D8B7D211-82D3-4A9C-AC4B-A84B41E1491A}|Checklist.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,16 +42,17 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-22T09:57:26.135Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -73,14 +74,14 @@
               "RelativeDocumentMoniker": "CLForm.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\CLForm.cs",
               "RelativeToolTip": "CLForm.cs",
-              "ViewState": "AgIAACIBAAAAAAAAAAAAAOYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-22T10:11:26.906Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "CLForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\CLForm.cs",
               "RelativeDocumentMoniker": "CLForm.cs",
@@ -98,14 +99,14 @@
               "RelativeDocumentMoniker": "Settings.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\Settings.cs",
               "RelativeToolTip": "Settings.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAQwGYAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAcwJcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-22T16:06:55.335Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Settings.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\Settings.cs",
               "RelativeDocumentMoniker": "Settings.cs",
@@ -117,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "HistoryForm.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\HistoryForm.cs",
               "RelativeDocumentMoniker": "HistoryForm.cs",
@@ -125,20 +126,18 @@
               "RelativeToolTip": "HistoryForm.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAzwBYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T12:21:56.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-29T12:21:56.946Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "HistoryForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\HistoryForm.cs",
               "RelativeDocumentMoniker": "HistoryForm.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\C#\\Checklist\\HistoryForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "HistoryForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T12:16:10.715Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2025-06-29T12:16:10.715Z"
             }
           ]
         }
